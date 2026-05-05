@@ -72,10 +72,19 @@ def normalize_flashscore_payload(payload: dict[str, Any] | list[dict[str, Any]])
 
 
 def normalize_flashscore_csv(csv_content: str) -> list[FootballMatch]:
+    if not csv_content.strip():
+        raise ValueError("CSV content is empty.")
+
     reader = csv.DictReader(io.StringIO(csv_content))
+    if not reader.fieldnames:
+        raise ValueError("CSV header is missing.")
+
     matches: list[FootballMatch] = []
 
     for idx, row in enumerate(reader):
+        if not any((value or "").strip() for value in row.values()):
+            continue
+
         external_id = row.get("match_id") or row.get("matchId") or str(idx)
         raw_match = {
             "matchId": external_id,

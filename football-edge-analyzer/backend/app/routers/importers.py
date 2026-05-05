@@ -28,7 +28,10 @@ async def import_flashscore_csv(file: UploadFile = File(...)):
     except UnicodeDecodeError as exc:
         raise HTTPException(status_code=400, detail="CSV must be UTF-8 encoded.") from exc
 
-    matches = normalize_flashscore_csv(csv_content)
+    try:
+        matches = normalize_flashscore_csv(csv_content)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
     if not matches:
         raise HTTPException(status_code=400, detail="CSV file has no valid rows.")
