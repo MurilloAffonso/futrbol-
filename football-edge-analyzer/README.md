@@ -111,3 +111,18 @@ Relevant endpoints:
 - `POST /ai/chat`
 
 See `docs/openrouter-integration.md` for details and guardrails.
+
+## Endpoints MVP
+- GET /health
+- POST/GET /teams
+- POST/GET /matches
+- GET /matches/{id}
+- POST/GET /odds
+- POST /analysis/value-bet
+- POST /analysis/batch-value-bets
+- GET /value-bets
+- POST /imports/flashscore-json
+- GET /imports
+- GET /sync-logs
+- POST /ai/explain-value-bet
+- POST /ai/chat
