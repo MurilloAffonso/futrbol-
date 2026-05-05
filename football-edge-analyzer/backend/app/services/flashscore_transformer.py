@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import csv
+import io
 from typing import Any
 from app.models.domain import (
     FootballMatch,
@@ -66,4 +68,38 @@ def normalize_flashscore_payload(payload: dict[str, Any] | list[dict[str, Any]])
     for external_id, raw in payload.items():
         if isinstance(raw, dict):
             matches.append(normalize_flashscore_match(external_id, raw))
+    return matches
+
+
+def normalize_flashscore_csv(csv_content: str) -> list[FootballMatch]:
+    if not csv_content.strip():
+        raise ValueError("CSV content is empty.")
+
+    reader = csv.DictReader(io.StringIO(csv_content))
+    if not reader.fieldnames:
+        raise ValueError("CSV header is missing.")
+
+    matches: list[FootballMatch] = []
+
+    for idx, row in enumerate(reader):
+        if not any((value or "").strip() for value in row.values()):
+            continue
+
+        external_id = row.get("match_id") or row.get("matchId") or str(idx)
+        raw_match = {
+            "matchId": external_id,
+            "stage": row.get("stage"),
+            "date": row.get("date"),
+            "status": row.get("status"),
+            "home": {"name": row.get("home_name"), "image": row.get("home_image")},
+            "away": {"name": row.get("away_name"), "image": row.get("away_image")},
+            "result": {
+                "home": row.get("home_goals"),
+                "away": row.get("away_goals"),
+                "regulationTime": row.get("regulation_time"),
+                "penalties": row.get("penalties"),
+            },
+        }
+        matches.append(normalize_flashscore_match(str(external_id), raw_match))
+
     return matches

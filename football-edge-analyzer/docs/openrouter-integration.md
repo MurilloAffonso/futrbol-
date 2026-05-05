@@ -95,3 +95,8 @@ Dashboard / report
 ```
 
 Keep `OpenRouterService` optional and isolated. No core calculation should depend on AI availability.
+
+## Segurança
+- Nunca expor OPENROUTER_API_KEY em logs.
+- Sem chave ou OPENROUTER_ENABLED=false: usar fallback mock.
+- IA apenas explica analises matematicas pre-calculadas.

@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import get_settings
+from app.db import Base, engine
+from app.models import db_models  # noqa: F401
 from app.routers import ai, analysis, health, importers
+from app.routers.entities import router as entities_router
 
 settings = get_settings()
 
@@ -23,6 +26,12 @@ app.include_router(health.router)
 app.include_router(analysis.router)
 app.include_router(importers.router)
 app.include_router(ai.router)
+app.include_router(entities_router)
+
+
+@app.on_event("startup")
+def startup() -> None:
+    Base.metadata.create_all(bind=engine)
 
 
 @app.get("/")
