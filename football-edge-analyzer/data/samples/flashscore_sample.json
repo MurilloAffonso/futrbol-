@@ -1,0 +1,53 @@
+{
+  "IHCq3ARL": {
+    "stage": "FINAL",
+    "date": "20.02.2022 16:00",
+    "status": "FINISHED",
+    "home": {
+      "name": "Atletico-MG",
+      "image": "https://example.com/home.png"
+    },
+    "away": {
+      "name": "Flamengo RJ",
+      "image": "https://example.com/away.png"
+    },
+    "result": {
+      "home": "3",
+      "away": "2",
+      "regulationTime": "2-2",
+      "penalties": "8-7"
+    },
+    "information": [
+      {
+        "category": "Referee",
+        "value": "Daronco A. (Bra)"
+      },
+      {
+        "category": "Venue",
+        "value": "Arena Pantanal (Cuiaba)"
+      }
+    ],
+    "statistics": [
+      {
+        "category": "Ball Possession",
+        "homeValue": "57%",
+        "awayValue": "43%"
+      },
+      {
+        "category": "Goal Attempts",
+        "homeValue": "15",
+        "awayValue": "10"
+      },
+      {
+        "category": "Shots on Goal",
+        "homeValue": "6",
+        "awayValue": "4"
+      },
+      {
+        "category": "Corner Kicks",
+        "homeValue": "8",
+        "awayValue": "5"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "bets": [
+    {
+      "market": "Over 2.5 Goals",
+      "selection": "Over 2.5",
+      "offered_odd": 2.1,
+      "model_probability": 0.54,
+      "confidence_score": 68,
+      "won": true,
+      "stake": 1
+    },
+    {
+      "market": "Both Teams To Score",
+      "selection": "Yes",
+      "offered_odd": 1.95,
+      "model_probability": 0.5,
+      "confidence_score": 75,
+      "won": false,
+      "stake": 1
+    },
+    {
+      "market": "Goal Kicks",
+      "selection": "Over 8.5",
+      "offered_odd": 2.22,
+      "model_probability": 0.57,
+      "confidence_score": 72,
+      "won": true,
+      "stake": 1
+    }
+  ],
+  "min_ev": 0.1,
+  "min_confidence_score": 60
+}
