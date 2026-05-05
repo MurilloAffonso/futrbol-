@@ -46,3 +46,10 @@ Odd oferecida: 2.22
 Odd justa: 1 / 0.57 = 1.75
 EV: (0.57 * 2.22) - 1 = 26.54%
 ```
+
+## Regras de classificacao
+- EV < 0: no_value
+- 0 a 0.10: weak_value
+- 0.10 a 0.15: moderate_value
+- > 0.15: strong_value
+- dados insuficientes: insufficient_data
